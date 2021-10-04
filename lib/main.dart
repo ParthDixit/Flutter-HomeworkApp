@@ -42,7 +42,7 @@ class DataPage extends StatefulWidget {
 class _DataPageState extends State<DataPage> {
   bool btnState = false;
   Color btnClr = Colors.grey;
-  Color? uiColor = Colors.purple[900];
+  Color? uiColor = const Color(0xFF311f45);//Colors.deepPurple[800];
   final saved = <String>{};
   late String database ;
   bool isFetched = true;
@@ -320,6 +320,8 @@ class _DataPageState extends State<DataPage> {
                           fontSize: 23
                           ),
                           ),
+                    // trailing: Image.asset('assets/placeholder.png',width: 100, height: 80,),
+
                    ),
                  const Padding(padding: EdgeInsets.all(4))
                 ]
@@ -334,8 +336,8 @@ class _DataPageState extends State<DataPage> {
                   child:Container(
                //color: Colors.blue,
                       decoration: BoxDecoration(
-                      color: Colors.lime[50],
-                      borderRadius: BorderRadius.all(Radius.circular(10.0))),
+                      color: Colors.grey[50],//Colors.lime[50],
+                      borderRadius:  const BorderRadius.all( Radius.circular(10.0))),
                       height: 340,
                       width: MediaQuery.of(context).size.width,
                   child:
@@ -474,7 +476,7 @@ class _DataPageState extends State<DataPage> {
                     FadeInImage.assetNetwork(
                     placeholder: 'assets/placeholder.png', // Before image load '
                     image: standards[colIdx]['subjects'][rowIdx]['subject_image'], // After image load
-                    height: 200,
+                    height: 170,
                     imageErrorBuilder: (context, url, error) => Image.asset('assets/placeholder.png'),
                    // )
                          //width: 300,
