@@ -17,12 +17,9 @@ Future<String> loadAsset() async {
 
 void main() => runApp(MyApp());
 
-class ResetWidget extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) => MyApp();
-}
-
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
 
@@ -89,17 +86,11 @@ class _DataPageState extends State<DataPage> {
   }
 
   void _reset(BuildContext ctx) {
-    
-    // Navigator.pop(context);
-    // Navigator.push(context, CupertinoPageRoute(
-    //         builder: (BuildContext context) => build(context),
-    //       ));
+
     Navigator.pushReplacement(
-      context,
-      CupertinoPageRoute(
-        builder: (BuildContext context) => ResetWidget(),
-      )
-    );
+        context,
+        CupertinoPageRoute(
+            builder: (BuildContext context) => super.widget));
   }
 
 
@@ -355,7 +346,7 @@ class _DataPageState extends State<DataPage> {
                           ),
                           ),
                    ),
-                 Padding(padding: EdgeInsets.all(4))
+                 const Padding(padding: EdgeInsets.all(4))
                 ]
             )),
        // itemBuilder: (BuildContext context, int index){
@@ -388,7 +379,7 @@ class _DataPageState extends State<DataPage> {
                                   padding: const EdgeInsets.all(3.0),
                                     decoration: BoxDecoration(
                                         color: uiColor,
-                                        borderRadius: BorderRadius.all(Radius.circular(7.0))),
+                                        borderRadius: const BorderRadius.all(Radius.circular(7.0))),
                                   //decoration: ShapeDecoration(shape: RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(8.0))), color: Colors.deepPurple),
                                   //BoxDecoration(border: Border.all()
                                   //
