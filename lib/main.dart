@@ -4,6 +4,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'dart:convert' ;
 import 'dart:async' show Future;
@@ -41,7 +42,7 @@ class DataPage extends StatefulWidget {
 class _DataPageState extends State<DataPage> {
   bool btnState = false;
   Color btnClr = Colors.grey;
-  Color uiColor = Colors.deepPurple;
+  Color? uiColor = Colors.purple[900];
   final saved = <String>{};
   late String database ;
   bool isFetched = true;
@@ -332,8 +333,8 @@ class _DataPageState extends State<DataPage> {
                  padding: const EdgeInsets.all(8),
                   child:Container(
                //color: Colors.blue,
-                      decoration: const BoxDecoration(
-                      color: Colors.black12,
+                      decoration: BoxDecoration(
+                      color: Colors.lime[50],
                       borderRadius: BorderRadius.all(Radius.circular(10.0))),
                       height: 340,
                       width: MediaQuery.of(context).size.width,
@@ -436,7 +437,7 @@ class _DataPageState extends State<DataPage> {
           Card(
               semanticContainer: true,
               elevation: 12,
-              color: Colors.white,
+              color: Colors.deepOrange[50],
               margin: const EdgeInsets.only(left: 8, right: 8, bottom: 8),
               shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10.0))),
               child: InkWell(
@@ -455,7 +456,7 @@ class _DataPageState extends State<DataPage> {
                       }
                       else {
                         btnState = true;
-                        btnClr = uiColor;
+                        btnClr = uiColor!;
                       }
                   }
                   );
@@ -463,14 +464,20 @@ class _DataPageState extends State<DataPage> {
                 child:
               Column(
                 mainAxisSize: MainAxisSize.min,
+
                 children: <Widget>[
 
-                  FadeInImage.assetNetwork(
+                    // Container(color: Colors.pink,
+                    //   height: 200,
+                    //   width: 190,
+                    //   child:
+                    FadeInImage.assetNetwork(
                     placeholder: 'assets/placeholder.png', // Before image load '
                     image: standards[colIdx]['subjects'][rowIdx]['subject_image'], // After image load
                     height: 200,
                     imageErrorBuilder: (context, url, error) => Image.asset('assets/placeholder.png'),
-                    //width: 300,
+                   // )
+                         //width: 300,
                   ),
                 //Image.network(standards[col_idx]['subjects'][row_idx]['subject_image'],cacheHeight: 180,),//images[row_idx]
 
@@ -479,6 +486,12 @@ class _DataPageState extends State<DataPage> {
                   controlAffinity: ListTileControlAffinity.leading,
                   contentPadding: const EdgeInsets.only(left:7),
                   value: saved.contains(str),//isChecked,
+                  tileColor: Colors.white,
+                  checkColor: Colors.white,
+                  activeColor: uiColor,
+                  shape: const RoundedRectangleBorder(borderRadius:
+                              BorderRadius.only(bottomLeft: Radius.circular(10.0),
+                              bottomRight: Radius.circular(10.0))),
                   onChanged: (bool? value)
                     {
                     setState(() {
@@ -495,7 +508,7 @@ class _DataPageState extends State<DataPage> {
                       }
                       else {
                         btnState = true;
-                        btnClr = uiColor;
+                        btnClr = uiColor!;
                       }
                        });
                     },
